@@ -1,15 +1,12 @@
 import React from "react";
-// import { FaBars } from "react-icons/fa";
+import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
-import "./header.css";
 
-const Header = () => {
+import "./sidebar.css";
+
+const Sidebar = () => {
   return (
-    <header className="header">
-      <div>
-        <h1>-LOGO-</h1>
-      </div>
-
+    <Menu>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -27,9 +24,8 @@ const Header = () => {
           <Link to="/contact-us">ContactUs</Link>
         </li>
       </ul>
-      {/* <FaBars className="menu-bars" /> */}
-    </header>
+    </Menu>
   );
 };
 
-export default Header;
+export default Sidebar;

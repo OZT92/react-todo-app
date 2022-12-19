@@ -1,77 +1,37 @@
-import { useState } from "react";
 import Footer from "./components/ui/Footer.component";
 import Header from "./components/ui/Header.component";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SaveIcon from "@mui/icons-material/Save";
-import { TextField } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/Home.page";
+import TodosPage from "./pages/Todos.page";
+import FAQPage from "./pages/FAQ.page";
+import AboutUsPage from "./pages/AboutUs.page";
+import ContactUsPage from "./pages/ContactUs.page";
+import Sidebar from "./components/ui/Sidebar.component";
 
 function App() {
-  const [list, setList] = useState([]);
-  const [value, setValue] = useState("");
-
-  const clickHandler = () => {
-    if (value === "") {
-      alert("Please enter something");
-      return;
-    }
-    // set list(value)
-    const tempList = [...list];
-    tempList.push(value);
-    setList(tempList);
-    setValue("");
-  };
-
-  const handleCleaerAll = () => {
-    setList([]);
-  };
-
   return (
-    <>
+    <div id="outer-container">
       <Header />
-      <div className="container">
-        {/* heading */}
-        <h2>
-          Todo App{" "}
-          <IconButton
-            aria-label="delete"
-            color="error"
-            onClick={handleCleaerAll}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </h2>
-
-        {/* create new todo */}
-        <div className="create-section">
-          <TextField
-            className="input"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            label="To-Do"
-            variant="outlined"
-          />
-          <IconButton aria-label="save" color="primary" onClick={clickHandler}>
-            <SaveIcon />
-          </IconButton>
-        </div>
-
-        {/* show our todo list */}
-        <div className="todo-list">
-          {list.length > 0 ? (
-            list.map((item, index) => (
-              <div key={index} className="todo-item">
-                {item}
-              </div>
-            ))
-          ) : (
-            <h1>No Todos</h1>
-          )}
-        </div>
+      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
+      <div id="page-wrap" className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/todos" element={<TodosPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/contact-us" element={<ContactUsPage />} />
+        </Routes>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
 export default App;
+
+// Home
+// Todos
+// Services
+// FAQ
+// AboutUs
+// ContactUs
