@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Footer from "./components/ui/Footer.component";
 import Header from "./components/ui/Header.component";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+import { TextField } from "@mui/material";
 
 function App() {
   const [list, setList] = useState([]);
@@ -29,23 +33,27 @@ function App() {
         {/* heading */}
         <h2>
           Todo App{" "}
-          <button className="ml-6 btn-clear-all" onClick={handleCleaerAll}>
-            Clear All
-          </button>
+          <IconButton
+            aria-label="delete"
+            color="error"
+            onClick={handleCleaerAll}
+          >
+            <DeleteIcon />
+          </IconButton>
         </h2>
 
         {/* create new todo */}
         <div className="create-section">
-          <label>Todo</label>
-          <input
-            type="text"
+          <TextField
             className="input"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            label="To-Do"
+            variant="outlined"
           />
-          <button className="button" onClick={clickHandler}>
-            Save
-          </button>
+          <IconButton aria-label="save" color="primary" onClick={clickHandler}>
+            <SaveIcon />
+          </IconButton>
         </div>
 
         {/* show our todo list */}

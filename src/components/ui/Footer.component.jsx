@@ -1,8 +1,9 @@
 import React from "react";
+import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer className="custom-bg-dark custom-text-white custom-height-40 d-flex-center-center">
+    <footer className="footer custom-text-white custom-height-40 d-flex-center-center">
       All Rights Reserved. OZT92
     </footer>
   );
